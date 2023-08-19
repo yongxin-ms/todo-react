@@ -39,9 +39,14 @@ function App() {
     setTodos(newTodos);
   };
 
+  const totalRemaining = todos.filter((todo) => {
+    return !todo.done;
+  }).length;
+
   return (
     <div className="App">
       <h1>My Todo List</h1>
+      <div>TotalRemaining: {totalRemaining}</div>
       <div>
         <input type="text" onChange={handleChange} />
         <button onClick={handleClick}>Add</button>
