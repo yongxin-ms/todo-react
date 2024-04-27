@@ -54,8 +54,8 @@ function App() {
       <ul>
         {todos.map((todo, i) => {
           return (
-            <li>
-              <input type="checkbox" onClick={(e) => toggleDone(e, i)} checked={todo.done}></input>
+            <li key={i}>
+              <input type="checkbox" onClick={(e) => toggleDone(e, i)} defaultChecked={todo.done}></input>
               {todo.name}
             </li>
           );
