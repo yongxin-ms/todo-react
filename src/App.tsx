@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import React from "react";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -22,14 +22,14 @@ function App() {
     setTodoName("");
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: any } }) => {
     const name = e.target.value;
     setTodoName(name);
     console.log(e.target.value);
     console.log({ todoName });
   };
 
-  const toggleDone = (e, index) => {
+  const toggleDone = (_e: React.MouseEvent<HTMLInputElement, MouseEvent>, index: number) => {
     const newTodos = todos.map((todo, i) => {
       if (i !== index) {
         return todo;
@@ -55,11 +55,7 @@ function App() {
         {todos.map((todo, i) => {
           return (
             <li>
-              <input
-                type="checkbox"
-                onClick={(e) => toggleDone(e, i)}
-                checked={todo.done ? "checked" : ""}
-              ></input>
+              <input type="checkbox" onClick={(e) => toggleDone(e, i)} checked={todo.done}></input>
               {todo.name}
             </li>
           );
